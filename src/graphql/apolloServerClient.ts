@@ -1,6 +1,6 @@
 'use server';
 
-import { registerApolloClient } from '@apollo/experimental-nextjs-app-support';
+import { registerApolloClient } from '@apollo/client-integration-nextjs';
 import { cookies } from 'next/headers';
 
 import { ApolloClient, ApolloLink, HttpLink, InMemoryCache } from '@apollo/client';
