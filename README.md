@@ -67,7 +67,7 @@ $ yarn g
 
 ### GraphQL
 
-#### Apollo client with [experimental-nextjs-app-support](https://www.npmjs.com/package/@apollo/experimental-nextjs-app-support)
+#### Apollo client with [@apollo/client-integration-nextjs](https://www.npmjs.com/package/@apollo/client-integration-nextjs)
 
 You can see client apollo provider [here](./src/providers/CustomApolloProvider.tsx)
 
