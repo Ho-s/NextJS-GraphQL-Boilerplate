@@ -1,13 +1,14 @@
-# NextJS15-GraphQL-Boilerplate
+# NextJS-GraphQL-Boilerplate
 
-`Next15 + GraphQL` boilerplate
+`NextJS + GraphQL` boilerplate
 
 ## How to use
 
-- Framework: [`NextJS15`](https://nextjs.org/)(Using [`App Router`](https://nextjs.org/docs/app))
+- Framework: [`NextJS`](https://nextjs.org/)(Using [`App Router`](https://nextjs.org/docs/app))
 - Compiler: [`SWC`](https://swc.rs/)
 - Styling: [`styled-component`](https://styled-components.com/)
 - Testing tool: [`Jest`](https://jestjs.io/) + [`React Testing Library`](https://testing-library.com/docs/react-testing-library/intro/)
+- GraphQL Client: [`Apollo Client`](https://www.apollographql.com/docs/react/) + [`@apollo/client-integration-nextjs`](https://www.npmjs.com/package/@apollo/client-integration-nextjs)
 - Code generator: [`PlopJS`](https://plopjs.com/)
 - CI / CD: [`Github Actions`](https://github.com/features/actions) + [`Husky`](https://typicode.github.io/husky/)
 
