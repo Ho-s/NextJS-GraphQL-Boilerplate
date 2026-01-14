@@ -1,15 +1,15 @@
+import { useQuery } from '@apollo/client/react';
 import { render } from '@testing-library/react';
-
-import { useQuery } from '@apollo/client';
 
 import { GET_LANDPADS } from '~/graphql/query/landpad';
 
 import LandPadsPage from './page';
 
-jest.mock('@apollo/client', () => ({
+jest.mock('@apollo/client/react', () => ({
   useQuery: jest.fn(),
-  gql: jest.fn(),
 }));
+
+const mockUseQuery = jest.mocked(useQuery);
 
 describe('LandPadsPage', () => {
   it('should call useQuery with correct variables', () => {
@@ -32,11 +32,11 @@ describe('LandPadsPage', () => {
       loading: false,
     };
 
-    (useQuery as jest.Mock).mockReturnValue(response);
+    mockUseQuery.mockReturnValue(response as ReturnType<typeof useQuery>);
 
     render(<LandPadsPage />);
 
-    expect(useQuery).toHaveBeenCalledWith(
+    expect(mockUseQuery).toHaveBeenCalledWith(
       GET_LANDPADS,
       expect.objectContaining({
         variables: { options: { paginate: { page: 1, limit: 10 } } },

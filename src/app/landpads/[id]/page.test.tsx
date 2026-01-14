@@ -1,16 +1,17 @@
 import { render } from '@testing-library/react';
 
-import { apolloServerClient } from '~/graphql/apolloServerClient';
 import { GET_ONE_LANDPAD } from '~/graphql/query/landpad';
 
 import LandpadsIdpage from './page';
 
+const mockQuery = jest.fn();
+
 jest.mock('../../../graphql/apolloServerClient', () => ({
-  apolloServerClient: jest.fn(),
+  getClient: () => ({ query: mockQuery }),
 }));
 
 describe('LandpadDetailPage', () => {
-  it('should call useQuery with correct variables', async () => {
+  it('should call query with correct variables', async () => {
     const response = {
       attempted_landings: null,
       details: 'details',
@@ -23,16 +24,13 @@ describe('LandpadDetailPage', () => {
       wikipedia: 'wikipedia',
     };
 
-    const mockClient = {
-      query: jest.fn().mockResolvedValue({ data: { landpad: response } }),
-    };
-    (apolloServerClient as jest.Mock).mockResolvedValue(mockClient);
+    mockQuery.mockResolvedValue({ data: { landpad: response } });
 
     const params = { id: '1' };
 
     render(await LandpadsIdpage({ params: Promise.resolve(params) }));
 
-    expect(mockClient.query).toHaveBeenCalledWith({
+    expect(mockQuery).toHaveBeenCalledWith({
       query: GET_ONE_LANDPAD,
       variables: params,
     });

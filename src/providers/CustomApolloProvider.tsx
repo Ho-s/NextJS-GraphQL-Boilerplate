@@ -10,10 +10,10 @@ import {
 } from '@apollo/client-integration-nextjs';
 import { getCookie } from 'cookies-next/client';
 
-import { ApolloLink } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-import { onError } from '@apollo/client/link/error';
-import createUploadLink from 'apollo-upload-client/createUploadLink.mjs';
+import { ApolloLink, CombinedGraphQLErrors } from '@apollo/client';
+import { SetContextLink } from '@apollo/client/link/context';
+import { ErrorLink } from '@apollo/client/link/error';
+import UploadHttpLink from 'apollo-upload-client/UploadHttpLink.mjs';
 
 import { GRAPHQL_ENDPOINT } from '~/constants/apiRelated';
 
@@ -22,7 +22,7 @@ const defaultHeader = {
 };
 
 const makeClient = () => {
-  const authLink = setContext(async (_, { headers }) => {
+  const authLink = new SetContextLink(async ({ headers }) => {
     const token = getCookie('token');
 
     return {
@@ -34,13 +34,13 @@ const makeClient = () => {
     };
   });
 
-  const httpLink = createUploadLink({
+  const httpLink = new UploadHttpLink({
     uri: GRAPHQL_ENDPOINT,
   });
 
-  const errorLink = onError(({ graphQLErrors }) => {
-    if (graphQLErrors) {
-      const unauthorized = graphQLErrors.some(({ message }) => message === 'Unauthorized');
+  const errorLink = new ErrorLink(({ error }) => {
+    if (CombinedGraphQLErrors.is(error)) {
+      const unauthorized = error.errors.some(({ message }) => message === 'Unauthorized');
       if (unauthorized) {
         // Do something
       }
