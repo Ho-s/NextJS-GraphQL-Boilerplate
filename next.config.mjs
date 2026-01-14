@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  transpilePackages: ['@storybook', 'storybook'],
   async headers() {
     return [
       {

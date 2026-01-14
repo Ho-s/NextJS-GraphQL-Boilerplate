@@ -39,3 +39,5 @@ storybook-static
 
 .env.*
 .env
+
+debug-storybook.log
