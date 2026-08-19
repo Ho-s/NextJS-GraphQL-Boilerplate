@@ -1,51 +1,14 @@
-'use client';
+import 'server-only';
 
-import { useEffect, useState } from 'react';
+import { cookies } from 'next/headers';
 
-import { deleteCookie, getCookie } from 'cookies-next/client';
-import Link from 'next/link';
+import HomePageUI from './page-ui';
 
-import Button from '~/components/Button';
+const Home = async () => {
+  const cookieStore = await cookies();
+  const isLoggedIn = Boolean(cookieStore.get('token'));
 
-import { RootPageStyled } from './styled';
+  return <HomePageUI isLoggedIn={isLoggedIn} />;
+};
 
-export default function Home() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const token = getCookie('token');
-
-    if (!token) return;
-
-    setIsLoggedIn(true);
-  }, []);
-
-  return (
-    <RootPageStyled>
-      {isLoggedIn ? (
-        <>
-          <Link href={'/cars'}>
-            <Button>Go to cars page(REST-API)</Button>
-          </Link>
-          <Link href={'/landpads'}>
-            <Button>Go to landpads page(GRAPHQL)</Button>
-          </Link>
-          <Button
-            onClick={() => {
-              deleteCookie('token');
-              setIsLoggedIn(false);
-            }}
-          >
-            Sign Out
-          </Button>
-        </>
-      ) : (
-        <Link href={'/sign/in'}>
-          <Button>Sign in needed</Button>
-        </Link>
-      )}
-    </RootPageStyled>
-  );
-}
+export default Home;

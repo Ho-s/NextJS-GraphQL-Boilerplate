@@ -11,18 +11,22 @@ import LandpadsIdUIPage from './page-ui';
 const LandpadsIdpage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
 
+  let landpad: Landpad | undefined;
+
   try {
     const { data } = await getClient().query<{ landpad: Landpad }, { id: string }>({
       query: GET_ONE_LANDPAD,
       variables: { id },
     });
 
-    if (!data) return;
-
-    return <LandpadsIdUIPage data={data.landpad} />;
+    landpad = data?.landpad;
   } catch {
     notFound();
   }
+
+  if (!landpad) return;
+
+  return <LandpadsIdUIPage data={landpad} />;
 };
 
 export default LandpadsIdpage;
