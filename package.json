@@ -52,7 +52,7 @@
     "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "@types/apollo-upload-client": "^19.0.0",
     "@types/jest": "^30.0.0",
-    "@types/node": "^25",
+    "@types/node": "^24.13.3",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "cypress": "^15.21.0",
