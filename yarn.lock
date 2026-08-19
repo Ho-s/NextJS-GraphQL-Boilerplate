@@ -2467,10 +2467,10 @@
   dependencies:
     tslib "^2.8.0"
 
-"@swc/plugin-styled-components@^12.9.0":
-  version "12.9.0"
-  resolved "https://registry.yarnpkg.com/@swc/plugin-styled-components/-/plugin-styled-components-12.9.0.tgz#e8bb0e7ae22ab34a25ebff7e2b93b866ae8f728f"
-  integrity sha512-xZD3VbTUcCVkfDf580so0wCn+o6I040mwKtP+69M4gJEuBxASXh/MZCSKLFvr41b+crA076NF82iizbGRXsMxg==
+"@swc/plugin-styled-components@^13.0.0":
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/@swc/plugin-styled-components/-/plugin-styled-components-13.0.0.tgz#b2b1808880e7556b5f2ce623294d507bdb93397d"
+  integrity sha512-9kWagP4qtU4XZ7iyVrR2Nlw4/NMrbRpPCsCims15tKPHiWDI2FdL9+2ocOqB+uDwNCv3wGc8P/Eagbh3+zY/3Q==
   dependencies:
     "@swc/counter" "^0.1.3"
 
