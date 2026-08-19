@@ -106,7 +106,6 @@ YOu can see server apollo client [here](./src/graphql/apolloServerClient.ts)
 ├── .gitignore # Specifies files and directories to be ignored by Git
 ├── .prettierignore # Specifies files and directories to be ignored by Prettier
 ├── .prettierrc # Prettier configuration file for code formatting
-├── .swcrc # SWC configuration file for JavaScript/TypeScript compilation
 ├── additional.d.ts # Additional TypeScript type definitions
 ├── jest.config.ts # Jest configuration file for testing
 ├── jest.setup.ts # Setup file for configuring Jest and testing environment
